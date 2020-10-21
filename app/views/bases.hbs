@@ -1,0 +1,53 @@
+<!doctype html> 
+<html>
+<meta charset='utf-8'>
+<head>
+<title>imgExample</title>
+<style type="text/css">
+    .crop {
+    	position: absolute;
+    	left: 0px;
+    	top: 0px;
+	    width: 400px;
+	    height: 250px;
+	    overflow: hidden;
+	    margin: 0 0 0 0;
+	}
+	.crop img {
+	    width: 400px;
+	    height: 500px;
+	    margin: 0 0 0 0;
+	}
+</style>
+
+</head>
+<body id="body">
+	<div class="crop" id="pictures">
+		<img src="/images/01.jpg" id="picture01">
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $( "#picture01").on( "click", function() {
+        var elem = $("<div class='crop'><img src='/images/02.jpg'></div>");
+        elem.css('left', '400px');
+        elem.on("click", function() {
+            alert('ok');
+        });
+        $("#body").append(elem);
+    });
+    //delete
+    function deletePicture(val) {
+        $("#"+val).remove();
+    }
+    //chenge position
+    function chengePosition(val) {
+        return $("#"+val).offset({top: 100, left: 500});
+    }
+    //chenge this picture
+    function chengePicture(val,) {
+        $("#"+val).attr('src', '/images/02.jpg');
+    }
+</script>
+
